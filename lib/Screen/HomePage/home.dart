@@ -119,6 +119,7 @@ class _HomeState extends State<Home>
 //============================= initState Method ===============================
   @override
   void initState() {
+
     callApi();
     context.read<HomeProvider>().getSalesReportRequest(context);
     SystemChromeSettings.setSystemButtomNavigationBarithTopAndButtom();
@@ -127,6 +128,7 @@ class _HomeState extends State<Home>
     pushNotificationService.initialise();
     providerRequiestForData();
     getSallerDetail();
+    orderListProvider?.getOrder(setStateNow, context);
     // Future.delayed(
     //   Duration.zero,
     //       () {
@@ -677,9 +679,9 @@ class _HomeState extends State<Home>
                                     height: MediaQuery.of(context).size.height /
                                         1.2,
                                     child:
-                                    orderListProvider== null
-                                        ? const Center(child: CircularProgressIndicator(color: primary))
-                                        :
+                                    // orderListProvider== null
+                                    //     ? const Center(child: CircularProgressIndicator(color: primary))
+                                    //     :
                                     orderListProvider?.orderList.isEmpty ?? true
                                             ? const Text("No Order Found!!")
                                             : RefreshIndicator(
@@ -726,10 +728,7 @@ class _HomeState extends State<Home>
                                                                     .position
                                                                     .pixels <=
                                                                 0) {
-                                                          orderListProvider!
-                                                              .getOrder(
-                                                                  setStateNow,
-                                                                  context);
+                                                          orderListProvider!.getOrder(setStateNow, context);
                                                         }
                                                       } on Exception catch (_) {}
 
@@ -854,6 +853,7 @@ class _HomeState extends State<Home>
     isNetworkAvail = await isNetworkAvailable();
     if (isNetworkAvail) {
       await getSetting();
+
     } else {
       if (mounted) {
         setState(() {
