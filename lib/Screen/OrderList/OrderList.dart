@@ -575,6 +575,7 @@ class _OrderListState extends State<OrderList>
                                       child: OrderIteam(
                                         index: index,
                                         update: _refresh,
+                                          orderListProvider:orderListProvider
                                       ),
                                     );
                             },

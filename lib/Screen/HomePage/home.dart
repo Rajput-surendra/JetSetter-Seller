@@ -13,6 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../Helper/PushNotificationService.dart';
 import '../../Model/OrdersModel/OrderModel.dart';
 import '../../Provider/homeProvider.dart';
+import '../../Provider/orderListProvider.dart';
 import '../../Provider/privacyProvider.dart';
 import '../../Provider/settingProvider.dart';
 import '../../Widget/api.dart';
@@ -112,6 +113,8 @@ class _HomeState extends State<Home>
     //RETURNED,
     awaitingPayment
   ];
+  OrderListProvider? orderListProvider;
+
 
 //===================================== For Chart ==============================
   int curChart = 0;
@@ -120,6 +123,9 @@ class _HomeState extends State<Home>
   @override
   void initState() {
 
+    print("mainnnnnnnn");
+    orderListProvider = Provider.of<OrderListProvider>(context, listen: false);
+    orderListProvider!.initializeAllVariable();
     callApi();
     context.read<HomeProvider>().getSalesReportRequest(context);
     SystemChromeSettings.setSystemButtomNavigationBarithTopAndButtom();
@@ -391,6 +397,7 @@ class _HomeState extends State<Home>
 //=========================== Body Part Implimentation =========================
 
   getBodyPart() {
+    print("orderlist: UI" + orderListProvider!. orderList.length.toString());
 
     return WillPopScope(
         onWillPop: onWillPopScope,
@@ -684,7 +691,8 @@ class _HomeState extends State<Home>
                                     //     :
                                     orderListProvider?.orderList.isEmpty ?? true
                                             ? const Text("No Order Found!!")
-                                            : RefreshIndicator(
+                                            :
+                                    RefreshIndicator(
                                                 key: orderListProvider!
                                                     .refreshIndicatorKey,
                                                 onRefresh: _refresh,
@@ -754,6 +762,7 @@ class _HomeState extends State<Home>
                                                                         index,
                                                                     update:
                                                                         setStateNow,
+                                                                          orderListProvider:orderListProvider
                                                                   ),
                                                                 );
                                                     },

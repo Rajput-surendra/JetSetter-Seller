@@ -22,7 +22,8 @@ class OrderTracking {
 
   factory OrderTracking.fromJson(Map<String, dynamic> json) => OrderTracking(
         id: json["id"],
-        orderId: json["order_id"],
+        orderId: json["order_id"]
+    ,
         courierAgency: json["courier_agency"],
         trackingId: json["tracking_id"],
         url: json["url"],

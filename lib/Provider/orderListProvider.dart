@@ -112,7 +112,7 @@ class OrderListProvider extends ChangeNotifier {
           OFFSET: scrollOffset.toString(),
           SEARCH: searchText.trim(),
         };
-       print('_____parameter_____${parameter}_________');
+       print('_____parameter in home page_____${parameter}_________');
         if (currentSelectedOrderType != '') {
           parameter["order_type"] = currentSelectedOrderType;
         }
@@ -144,7 +144,6 @@ class OrderListProvider extends ChangeNotifier {
           if (data.length != 0) {
             tempList = (data as List).map((data) => Order_Model.fromJson(data)).toList();
             print("tempList order: " + tempList.length.toString());
-
             orderList.addAll(tempList);
             print("orderlist: " + orderList.length.toString());
             scrollLoadmore = true;

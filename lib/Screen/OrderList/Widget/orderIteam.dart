@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sellermultivendor/Provider/orderListProvider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../Helper/Color.dart';
 import '../../../Helper/Constant.dart';
@@ -14,11 +15,11 @@ import '../OrderList.dart';
 class OrderIteam extends StatelessWidget {
   int index;
   Function update;
-
+  OrderListProvider? orderListProvider;
   OrderIteam({
     Key? key,
     required this.index,
-    required this.update,
+    required this.update,required this.orderListProvider,
   }) : super(key: key);
 
   _launchCaller(String phone) async {

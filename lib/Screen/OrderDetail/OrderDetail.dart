@@ -101,7 +101,6 @@ class StateOrder extends State<OrderDetail> with TickerProviderStateMixin {
     PROCESSED,
     SHIPED,
     DELIVERD,
-
     RETURNED,
   ];
 
@@ -214,6 +213,7 @@ class StateOrder extends State<OrderDetail> with TickerProviderStateMixin {
         SellerId:context.read<SettingProvider>().CUR_USERID,
         Id: widget.id,
       };
+      print("get order details api $parameter");
       ApiBaseHelper().postAPICall(getOrdersApi, parameter).then(
             (getdata) async {
 
