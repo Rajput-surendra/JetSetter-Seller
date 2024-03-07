@@ -232,15 +232,16 @@ class _WalletHistoryState extends State<WalletHistory>
     if (isNetworkAvail) {
       var parameter = {
         UserId: context.read<SettingProvider>().CUR_USERID,
-        Amount: amtC!.text.toString(),
+        Amount: amtC?.text.toString(),
         PaymentAddress:
-            "${acc_num!.text.toString()}\n${ifsc_code!.text.toString()}\n${acc_name!.text.toString()}",
+            "${acc_num?.text.toString()}\n${ifsc_code?.text.toString()}\n${acc_name?.text.toString()}",
       };
-
+print('${parameter}');
       apiBaseHelper.postAPICall(sendWithDrawalRequestApi, parameter).then(
         (getdata) {
           bool error = getdata["error"];
           String? msg = getdata["message"];
+
 
           if (!error) {
             setSnackbar(
@@ -330,6 +331,7 @@ class _WalletHistoryState extends State<WalletHistory>
                                         fontWeight: FontWeight.normal),
                               ),
                               controller: amtC,
+
                             ),
                           ),
                           Padding(
@@ -372,6 +374,8 @@ class _WalletHistoryState extends State<WalletHistory>
                                     ),
                               ),
                               controller: acc_num,
+
+
                             ),
                           ),
                           Padding(

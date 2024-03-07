@@ -322,7 +322,6 @@ class _HomeState extends State<Home>
       ApiBaseHelper().postAPICall(getSellerDetailsApi, parameter).then(
         (getdata) async {
           bool error = getdata["error"];
-          print('______aaaaaa____${getSellerDetailsApi}_____${parameter}____');
           if (!error) {
             var data = getdata["data"][0];
             if (data["status"] != "1") {

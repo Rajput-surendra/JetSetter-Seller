@@ -18,6 +18,7 @@ String defaultCountryCode = 'IN';
 
 //Add your secret key here to conncet app with admin panel .
 const String baseUrl = 'https://jetsetterindia.com/seller/app/v1/api/';
+const String imageUrl = 'https://jetsetterindia.com';
 const String jwtKey = '';
 
 //Time settings

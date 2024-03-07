@@ -295,6 +295,7 @@ class OrderIteam extends StatelessWidget {
             ],
           ),
           onTap: () async {
+            print('${model.orderDate}___________');
             await Navigator.push(
               context,
               CupertinoPageRoute(

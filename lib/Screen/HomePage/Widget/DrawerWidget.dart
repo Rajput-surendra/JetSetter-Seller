@@ -332,7 +332,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
 
   sallerLogo(double size) {
     return CircleAvatar(
-      backgroundImage: NetworkImage(LOGO),
+      backgroundImage: NetworkImage('$imageUrl/${LOGO}'),
       radius: 25,
     );
   }

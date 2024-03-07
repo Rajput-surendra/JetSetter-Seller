@@ -121,7 +121,7 @@ class Order_Model {
     itemList = order!.map((data) => OrderItem.fromJson(data)).toList();
     String date = parsedJson[DateAdded];
 
-    date = DateFormat('dd-MM-yyyy').format(DateTime.parse(date));
+    date = DateFormat('dd-MM-yyyy hh:MM a').format(DateTime.parse(date));
 
     List<String?> lStatus = [];
     List<String?> lDate = [];
